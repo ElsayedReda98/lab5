@@ -1,0 +1,10 @@
+<div class="col-10">
+  <input
+    type="search"
+    class="form-control mt-2"
+    placeholder="search"
+    [(ngModel)]="searchValue"
+  />
+  <br />
+  <app-products [filterValue]="searchValue"></app-products>
+</div>

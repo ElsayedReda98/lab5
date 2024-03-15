@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="card">
+        <h3 class="card-title">Categories</h3>
+    </div>
+    <div>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Category Id</th>
+                    <th>Category Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (item of _categories; track $index) {
+                <tr>
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

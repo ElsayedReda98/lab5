@@ -1,0 +1,33 @@
+<div class="col-10 bg-light">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if(_productsCart.length == 0){
+      <span class="text-danger">No items</span>
+      } @for (item of _productsCart; track $index) {
+      <tr>
+        <th scope="row">{{ $index + 1 }}</th>
+        <td scope="row">{{ item.name }}</td>
+        <td scope="row">{{ item.price }}</td>
+        <td scope="row">{{ item.quantity }}</td>
+        <td scope="row" class="d-flex gap-2">
+          <button class="btn btn-info" (click)="getDetails(item.id)">
+            Details
+          </button>
+          <button class="btn btn-danger" (click)="remove(item.id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,28 @@
+<div class="card relative" [appBorder]="_product.quantity" (click)="getProductDetails(_product.id)">
+  <img [src]="_product.imgURL" class="card-img-top" alt="" />
+  <div class="card-body">
+    <h5 class="card-title" [innerHTML]="_product.name | searchHighlight : _searchValue">
+      <!-- {{ }} -->
+    </h5>
+    <p class="card-text">
+      Price: {{ _product.price | currency : "EUR" : "Code" }}
+    </p>
+    @if( _product.discount){
+    <p class="card-text">Discont: {{ _product.discount }}%</p>
+    } @switch ( _product.quantity) { @case (1) {
+    <p class="text-warning">Only 1 items in stock</p>
+    } @case (2) {
+    <p class="text-info">Only 2 items in stock</p>
+    } @default {
+    <p class="text-primart">{{ _product.quantity }} items in stock</p>
+    } }
+    <button class="btn btn-primary" (click)="addProductToCart($event, _product)" [disabled]="_product.quantity == 0">
+      Add to cart
+    </button>
+    @if(_product.quantity == 0){
+    <p class="text-danger">Out of Stock</p>
+    }@else{
+    <p class="text-success">In Stock</p>
+    }
+  </div>
+</div>

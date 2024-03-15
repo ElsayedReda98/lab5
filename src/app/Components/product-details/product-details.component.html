@@ -1,0 +1,30 @@
+@if(!_product){
+<p class="text-danger">not found</p>
+}@else {
+<button class="btn btn-warning mt-4" (click)="goBack()">Products</button>
+<div class="product-details">
+  <div class="">
+    <img [src]="_product.imgURL" alt="" />
+  </div>
+  <div class="product-details-col">
+    <p>{{ _product.name }}</p>
+    <p>{{ _product.price | currency }}</p>
+    <p>{{ _product.quantity }}</p>
+    <p>{{ _product.description }}</p>
+  </div>
+</div>
+<div class="mt-4 d-flex gap-4">
+  <button [disabled]="isFirstIndex" (click)="goPrev(_product.id)" class="btn btn-secondary">
+    Previous
+  </button>
+  <button [disabled]="isLastIndex" class="btn btn-primary" (click)="goNext(_product.id)">
+    Next
+  </button>
+  <button class="btn btn-info" (click)="goUpdate(_product.id)">
+    Edit
+  </button>
+  <button class="btn btn-danger" (click)="goDelete(_product.id)">
+    Delete
+  </button>
+</div>
+}

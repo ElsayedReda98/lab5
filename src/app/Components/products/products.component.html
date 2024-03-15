@@ -1,0 +1,13 @@
+<div class="p-2 products-container">
+  @if(products.length == 0){
+  <h3 class="text-warrning">No Result found</h3>
+  } @for (parentProduct of products; track parentProduct.id) {
+  <app-single-product
+    [_product]="parentProduct"
+    (_handleProductToCart)="addToCart($event)"
+    [_searchValue]="filterValue"
+  ></app-single-product>
+  } @empty {
+  <h2>There are no items</h2>
+  }
+</div>
